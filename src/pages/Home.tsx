@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
-import { 
-  Home as HomeIcon, 
-  Factory, 
-  Tractor, 
-  Building, 
+import {
+  Home as HomeIcon,
+  Factory,
+  Tractor,
+  Building,
   Landmark,
   Plane,
   Film,
@@ -24,7 +24,7 @@ import {
 
 const Home = () => {
   const { scrollY } = useScroll();
-  
+
   // Simplified parallax - only essential transforms
   const heroY = useTransform(scrollY, [0, 800], [0, -100]);
   const heroOpacity = useTransform(scrollY, [0, 400], [1, 0.3]);
@@ -35,29 +35,43 @@ const Home = () => {
   const [whatWeDoRef, whatWeDoInView] = useInView({ threshold: 0.1, triggerOnce: true });
   const [industrialRef, industrialInView] = useInView({ threshold: 0.1, triggerOnce: true });
   const [airportRef, airportInView] = useInView({ threshold: 0.1, triggerOnce: true });
- 
+
   const services = [
     {
       icon: Landmark,
       title: 'Acquisition Land',
-      description: 'Expert guidance for land acquisition with comprehensive market analysis and legal support.',
+      description: 'Acquiring land involves navigating complex processes that require a deep understanding of zoning laws, land-use planning, environmental regulations, and market dynamics. At SGB Group, we provide expert guidance to ensure seamless acquisition of the right land at the right price. Our team performs in-depth due diligence, including legal verification, feasibility studies, and risk assessments to help you make confident investment decisions and unlock maximum value from your purchase.',
       image: 'https://images.pexels.com/photos/1370704/pexels-photo-1370704.jpeg?auto=compress&cs=tinysrgb&w=800',
-      color: 'from-blue-500 to-blue-700'
+      color: 'bg-black/40'
     },
     {
       icon: HomeIcon,
       title: 'Residential Plots',
-      description: 'Premium residential plots in YEIDA sectors with modern amenities and infrastructure.',
+      description: 'Our residential plots are strategically located in developed sectors of the Yamuna Expressway, offering access to premium infrastructure, modern amenities, and tranquil living environments. These plots are perfect for families looking to build their dream homes or investors seeking long-term capital appreciation. Whether you prefer a compact plot for a cozy home or a larger one for a luxurious villa, we offer a wide range of sizes to suit diverse lifestyle needs.',
       image: 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=800',
-      color: 'from-green-500 to-green-700'
+      color: 'bg-black/40'
     },
     {
       icon: Tractor,
       title: 'Farming Land',
-      description: 'Fertile agricultural land perfect for crops, livestock, and sustainable farming practices.',
+      description: 'Our farming lands are located in fertile zones ideal for diverse agricultural purposes such as crop cultivation, dairy farming, organic farming, and livestock management. These plots offer high productivity, good irrigation facilities, and connectivity to major rural markets. With growing demand for sustainable food sources and agri-business opportunities, investing in farming land ensures long-term returns and supports ecological balance.',
       image: 'https://images.pexels.com/photos/974314/pexels-photo-974314.jpeg?auto=compress&cs=tinysrgb&w=800',
-      color: 'from-yellow-500 to-orange-600'
+      color: 'bg-black/40'
     },
+    {
+      icon: Factory,
+      title: 'Industrial Plots',
+      description: 'Industrial plots offered by us are situated in designated industrial zones and special economic areas developed to boost manufacturing and logistics. These plots are suitable for warehouses, factories, logistics hubs, and production units, with access to wide roads, power supply, water facilities, and government incentives. Ideal for MSMEs and large-scale industries looking to expand operations in North India’s most promising corridor.',
+      image: 'https://images.pexels.com/photos/4476374/pexels-photo-4476374.jpeg?auto=compress&cs=tinysrgb&w=800',
+      color: 'bg-black/40'
+    },
+    {
+      icon: Building,
+      title: 'Semi-Commercial Plots',
+      description: 'Semi-commercial plots provide the flexibility of developing both residential and commercial structures on the same parcel of land. Whether it’s a residential complex with ground-floor retail or small office spaces above living units, these plots are highly versatile. Located in mixed-use zones, they attract both investors and business owners seeking long-term rental income and business-friendly surroundings with excellent footfall.',
+      image: 'https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg?auto=compress&cs=tinysrgb&w=800',
+      color: 'bg-black/40'
+    }
   ];
 
   const whatWeDoItems = [
@@ -100,7 +114,7 @@ const Home = () => {
   return (
     <div className="overflow-x-hidden">
       {/* Hero Section */}
-      <section 
+      <section
         ref={heroRef}
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
       >
@@ -109,7 +123,7 @@ const Home = () => {
           style={{ y: heroY, opacity: heroOpacity }}
           className="absolute inset-0 z-0"
         >
-          <div 
+          <div
             className="w-full h-full bg-cover bg-center bg-fixed"
             style={{
               backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://images.pexels.com/photos/280229/pexels-photo-280229.jpeg?auto=compress&cs=tinysrgb&w=1920')`
@@ -133,7 +147,7 @@ const Home = () => {
               visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
             }}
           >
-            <motion.h1 
+            <motion.h1
               className="text-5xl sm:text-6xl lg:text-8xl font-bold text-white mb-8 leading-tight"
               variants={fadeInUp}
               transition={{ duration: 0.8 }}
@@ -143,8 +157,8 @@ const Home = () => {
                 SGB Group
               </span>
             </motion.h1>
-            
-            <motion.p 
+
+            <motion.p
               className="text-xl sm:text-2xl lg:text-3xl text-gray-200 mb-12 max-w-4xl mx-auto leading-relaxed"
               variants={fadeInUp}
               transition={{ duration: 0.8 }}
@@ -163,7 +177,7 @@ const Home = () => {
       </section>
 
       {/* What We Do Section */}
-      <section 
+      <section
         ref={whatWeDoRef}
         className="py-20 bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden"
       >
@@ -178,21 +192,21 @@ const Home = () => {
                 visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
               }}
             >
-              <motion.h2 
+              <motion.h2
                 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8"
                 variants={slideInLeft}
                 transition={{ duration: 0.6 }}
               >
                 What <span className="text-red-600">We Do</span>
               </motion.h2>
-              
-              <motion.p 
+
+              <motion.p
                 className="text-lg text-gray-600 mb-10 leading-relaxed"
                 variants={slideInLeft}
                 transition={{ duration: 0.6 }}
               >
-                At SGB Group Of Real Estate, we understand that real estate transactions can be 
-                daunting and stressful. That's why we go above and beyond to ensure that our 
+                At SGB Group Of Real Estate, we understand that real estate transactions can be
+                daunting and stressful. That's why we go above and beyond to ensure that our
                 clients have a seamless and hassle-free experience.
               </motion.p>
 
@@ -244,7 +258,7 @@ const Home = () => {
       </section>
 
       {/* Our Services Section */}
-      <section 
+      <section
         id="services"
         ref={servicesRef}
         className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden"
@@ -259,14 +273,14 @@ const Home = () => {
             }}
             className="text-center mb-16"
           >
-            <motion.h2 
+            <motion.h2
               className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4"
               variants={fadeInUp}
               transition={{ duration: 0.6 }}
             >
               Our <span className="text-red-600">Services</span>
             </motion.h2>
-            <motion.p 
+            <motion.p
               className="text-xl text-gray-600 max-w-3xl mx-auto mb-4"
               variants={fadeInUp}
               transition={{ duration: 0.6 }}
@@ -288,48 +302,46 @@ const Home = () => {
                 animate={servicesInView ? "visible" : "hidden"}
                 variants={fadeInUp}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
+                className="group relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col"
               >
                 {/* Image */}
-                <div className="relative overflow-hidden h-48">
+                <div className="relative overflow-hidden h-48 flex-shrink-0">
                   <img
                     src={service.image}
                     alt={service.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className={`absolute inset-0 bg-gradient-to-t ${service.color} opacity-80 group-hover:opacity-90 transition-opacity duration-300`} />
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-300" />
                   <div className="absolute top-4 right-4 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
-                    <service.icon className="h-6 w-6 text-white" />
+                    {React.createElement(service.icon, { className: 'h-6 w-6 text-white' })}
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
+                <div className="p-6 flex flex-col justify-between h-full">
                   <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors duration-300">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed mb-4">
+                  <p className="text-gray-600 text-sm leading-relaxed line-clamp-6">
                     {service.description}
                   </p>
-                  <button className="flex items-center text-red-600 font-semibold group-hover:text-red-700 transition-colors duration-300">
-                    Learn More
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
                 </div>
               </motion.div>
             ))}
           </div>
+
+
         </div>
       </section>
 
       {/* Industrial Plots Section */}
-      <section 
+      <section
         ref={industrialRef}
         className="relative py-32 overflow-hidden"
       >
         {/* Static background for better performance */}
         <div className="absolute inset-0 z-0">
-          <div 
+          <div
             className="w-full h-full bg-cover bg-center bg-fixed"
             style={{
               backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&cs=tinysrgb&w=1920')`
@@ -347,7 +359,7 @@ const Home = () => {
               visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
             }}
           >
-            <motion.h2 
+            <motion.h2
               className="text-4xl lg:text-6xl font-bold text-white mb-6"
               variants={fadeInUp}
               transition={{ duration: 0.8 }}
@@ -357,8 +369,8 @@ const Home = () => {
                 Yamuna & Greater Noida
               </span>
             </motion.h2>
-            
-            <motion.p 
+
+            <motion.p
               className="text-xl lg:text-2xl text-gray-200 mb-12 max-w-4xl mx-auto"
               variants={fadeInUp}
               transition={{ duration: 0.8 }}
@@ -366,7 +378,7 @@ const Home = () => {
               You get very low price industrial plot near Yamuna expressway
             </motion.p>
 
-            <motion.div 
+            <motion.div
               className="flex flex-col sm:flex-row gap-6 justify-center items-center"
               variants={fadeInUp}
               transition={{ duration: 0.8 }}
@@ -396,7 +408,7 @@ const Home = () => {
       </section>
 
       {/* Noida International Airport Section */}
-      <section 
+      <section
         ref={airportRef}
         className="py-20 bg-gradient-to-br from-white via-blue-50 to-white relative overflow-hidden"
       >
@@ -423,12 +435,12 @@ const Home = () => {
                 visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
               }}
             >
-              <motion.p 
+              <motion.p
                 className="text-lg text-gray-600 mb-8 leading-relaxed"
                 variants={slideInLeft}
                 transition={{ duration: 0.6 }}
               >
-                Set to be India's largest airport in Jewar along the Yamuna Expressway. 
+                Set to be India's largest airport in Jewar along the Yamuna Expressway.
                 Over 5,000 acres with sustainability focus and world-class infrastructure.
               </motion.p>
 
@@ -457,7 +469,7 @@ const Home = () => {
               >
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Key Highlights</h3>
                 <p className="text-gray-600">
-                  First flight test in December 2024 • IATA code "DXN" • 
+                  First flight test in December 2024 • IATA code "DXN" •
                   Launch airlines: IndiGo, Akasa Air • Built with net-zero emissions goal
                 </p>
               </motion.div>

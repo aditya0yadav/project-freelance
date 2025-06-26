@@ -148,8 +148,8 @@ const Header = () => {
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`block px-6 py-3 mx-4 rounded-xl text-lg font-semibold transition-all duration-300 ${
                       location.pathname === item.path
-                        ? 'text-red-600 bg-red-50 border-l-4 border-red-600'
-                        : 'text-red-600 hover:bg-red-50 hover:translate-x-2'
+                        ? 'text-gray-800 bg-red-50 border-l-4 border-red-500 shadow-sm'
+                        : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50 hover:translate-x-2 hover:shadow-sm'
                     }`}
                   >
                     {item.name}
