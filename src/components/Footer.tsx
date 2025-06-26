@@ -135,50 +135,10 @@ const Footer = () => {
                     +91-9891919244
                   </a>
                 </motion.div>
-                <motion.div 
-                  className="flex items-center space-x-3 group"
-                  whileHover={{ x: 5 }}
-                >
-                  <Mail className="h-5 w-5 text-red-500 group-hover:scale-110 transition-transform" />
-                  <a 
-                    href="mailto:kasanaji143@gmail.com" 
-                    className="text-gray-300 hover:text-red-400 transition-colors duration-300"
-                  >
-                    kasanaji143@gmail.com
-                  </a>
-                </motion.div>
               </div>
             </motion.div>
 
-            {/* Social Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="space-y-6"
-            >
-              <h4 className="text-xl font-bold text-white">Follow Us</h4>
-              <div className="flex space-x-4">
-                {socialLinks.map((social, index) => (
-                  <motion.a
-                    key={social.name}
-                    href={social.href}
-                    initial={{ opacity: 0, scale: 0 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: index * 0.1 + 0.4 }}
-                    whileHover={{ 
-                      scale: 1.2, 
-                      rotate: 360,
-                      boxShadow: '0 10px 20px rgba(0,0,0,0.3)'
-                    }}
-                    whileTap={{ scale: 0.9 }}
-                    className={`w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-all duration-300 ${social.color} shadow-lg`}
-                  >
-                    <social.icon className="h-5 w-5" />
-                  </motion.a>
-                ))}
-              </div>
-            </motion.div>
+
           </div>
 
           {/* Bottom Section */}

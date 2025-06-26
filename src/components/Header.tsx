@@ -11,7 +11,6 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -30,9 +29,7 @@ const Header = () => {
           : 'bg-white/10 backdrop-blur-md'
       }`}
     >
-      <div className={`hidden lg:block transition-all duration-300 ${
-        isScrolled ? 'h-0 overflow-hidden' : 'h-auto'
-      }`}>
+      <div className={`hidden lg:block transition-all duration-300 ${isScrolled ? 'h-0 overflow-hidden' : 'h-auto'}`}>
         <div className="bg-gradient-to-r from-red-600 to-red-700 text-white py-2">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center text-sm">
@@ -82,19 +79,13 @@ const Header = () => {
 
           <nav className="hidden lg:flex items-center space-x-1">
             {navItems.map((item, index) => (
-              <div
-                key={item.name}
-                className="relative"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
+              <div key={item.name} className="relative" style={{ animationDelay: `${index * 100}ms` }}>
                 <a
                   href={item.path}
                   className={`relative px-4 py-2 text-sm font-semibold transition-all duration-300 rounded-lg group ${
                     location.pathname === item.path
                       ? 'text-red-600 bg-red-50'
-                      : isScrolled 
-                        ? 'text-gray-700 hover:text-red-600 hover:bg-red-50' 
-                        : 'text-white hover:text-red-200 hover:bg-white/10'
+                      : 'text-red-600 hover:bg-red-50'
                   }`}
                 >
                   <span className="relative z-10">{item.name}</span>
@@ -158,7 +149,7 @@ const Header = () => {
                     className={`block px-6 py-3 mx-4 rounded-xl text-lg font-semibold transition-all duration-300 ${
                       location.pathname === item.path
                         ? 'text-red-600 bg-red-50 border-l-4 border-red-600'
-                        : 'text-gray-700 hover:text-red-600 hover:bg-red-50 hover:translate-x-2'
+                        : 'text-red-600 hover:bg-red-50 hover:translate-x-2'
                     }`}
                   >
                     {item.name}
