@@ -1,13 +1,25 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useAnimation, useScroll, useTransform, motion as m } from 'framer-motion';
 import { Target, Eye, MapPin, Building, Users, Award, Zap, TrendingUp, Shield, Clock } from 'lucide-react';
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 },
+};
+
 
 const About = () => {
   const [introRef, introInView] = useInView({ threshold: 0.3, triggerOnce: true });
   const [missionRef, missionInView] = useInView({ threshold: 0.3, triggerOnce: true });
   const [yeidaRef, yeidaInView] = useInView({ threshold: 0.3, triggerOnce: true });
+  const [heroRef, heroInView] = useInView({ threshold: 0.3, triggerOnce: true });
   const [statsRef, statsInView] = useInView({ threshold: 0.3, triggerOnce: true });
+  const { scrollY } = useScroll();
+  const heroY = useTransform(scrollY, [0, 300], [0, -100]);
+  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0.3]);
+
 
   const sectors = {
     residential: ['18', '20', '17', '17A', '22D'],
@@ -45,54 +57,65 @@ const About = () => {
   return (
     <div className="pt-16 lg:pt-20 overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white overflow-hidden">
-        {/* Animated Background */}
-        <div className="absolute inset-0">
-          <motion.div
-            className="absolute top-20 left-20 w-64 h-64 bg-red-500/10 rounded-full blur-3xl"
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.1, 0.3],
+      <section 
+        ref={heroRef}
+        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      >
+        {/* Background with simplified parallax */}
+        <motion.div
+          style={{ y: heroY, opacity: heroOpacity }}
+          className="absolute inset-0 z-0"
+        >
+          <div 
+            className="w-full h-full bg-cover bg-center bg-fixed"
+            style={{
+              backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://images.pexels.com/photos/280229/pexels-photo-280229.jpeg?auto=compress&cs=tinysrgb&w=1920')`
             }}
-            transition={{ duration: 4, repeat: Infinity }}
           />
-          <motion.div
-            className="absolute bottom-20 right-20 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl"
-            animate={{
-              scale: [1, 1.3, 1],
-              opacity: [0.2, 0.05, 0.2],
-            }}
-            transition={{ duration: 5, repeat: Infinity, delay: 1 }}
-          />
+        </motion.div>
+
+        {/* Simplified background elements */}
+        <div className="absolute inset-0 z-10 pointer-events-none">
+          <div className="absolute top-20 left-20 w-32 h-32 bg-red-500/10 rounded-full blur-xl animate-pulse" />
+          <div className="absolute bottom-40 right-32 w-24 h-24 bg-blue-500/10 rounded-full blur-xl animate-pulse" style={{ animationDelay: '2s' }} />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* Hero Content */}
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+            initial="hidden"
+            animate={heroInView ? "visible" : "hidden"}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
+            }}
           >
             <motion.h1 
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-8"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
+              className="text-5xl sm:text-6xl lg:text-8xl font-bold text-white mb-8 leading-tight"
+              variants={fadeInUp}
               transition={{ duration: 0.8 }}
             >
-              About{' '}
+              Welcome To{' '}
               <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
                 SGB Group
-              </span>{' '}
-              Of Real Estate
+              </span>
             </motion.h1>
+            
             <motion.p 
-              className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              className="text-xl sm:text-2xl lg:text-3xl text-gray-200 mb-12 max-w-4xl mx-auto leading-relaxed"
+              variants={fadeInUp}
+              transition={{ duration: 0.8 }}
             >
-              Building trust through expertise, dedication, and unparalleled service in real estate
+              We have invited you to Yamuna Expressway with SGB Group of Real Estate
             </motion.p>
           </motion.div>
+        </div>
+
+        {/* Simplified scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse" />
+          </div>
         </div>
       </section>
 

@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Building2 } from 'lucide-react';
+import { Menu, X, Building2, Phone, Mail } from 'lucide-react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
+  const [activeTab, setActiveTab] = useState('/');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,203 +18,184 @@ const Header = () => {
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
+    { name: 'Services', path: '/services' },
+    { name: 'Properties', path: '/properties' },
     { name: 'Contact Us', path: '/contact' },
   ];
 
   return (
-    <motion.header
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out animate-in slide-in-from-top-4 ${
         isScrolled 
-          ? 'bg-white/95 backdrop-blur-lg shadow-2xl border-b border-gray-100' 
-          : 'bg-transparent backdrop-blur-sm'
+          ? 'bg-white/98 backdrop-blur-xl shadow-xl border-b border-gray-100' 
+          : 'bg-white/10 backdrop-blur-md'
       }`}
     >
+      {/* Top Contact Bar - Only visible on larger screens */}
+      <div className={`hidden lg:block transition-all duration-300 ${
+        isScrolled ? 'h-0 overflow-hidden' : 'h-auto'
+      }`}>
+        <div className="bg-gradient-to-r from-red-600 to-red-700 text-white py-2">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center text-sm">
+              <div className="flex items-center space-x-6">
+                <div className="flex items-center space-x-2">
+                  <Phone className="h-4 w-4" />
+                  <span>+91 98765 43210</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Mail className="h-4 w-4" />
+                  <span>info@sgbgroup.com</span>
+                </div>
+              </div>
+              <div className="text-sm">
+                Premium Real Estate Solutions Since 2010
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 group">
-            <motion.div
-              whileHover={{ rotate: 360, scale: 1.1 }}
-              transition={{ duration: 0.6 }}
-              className="relative"
-            >
-              <Building2 className="h-10 w-10 text-red-600 drop-shadow-lg" />
-              <motion.div
-                className="absolute inset-0 bg-red-600 rounded-full opacity-20"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-            </motion.div>
+          <a 
+            href="/" 
+            className="flex items-center space-x-3 group transition-transform duration-300 hover:scale-105"
+          >
+            <div className="relative">
+              <Building2 className={`h-10 w-10 lg:h-12 lg:w-12 transition-all duration-300 ${
+                isScrolled ? 'text-red-600' : 'text-white drop-shadow-lg'
+              } group-hover:rotate-12 group-hover:scale-110`} />
+              <div className="absolute inset-0 bg-red-600 rounded-full opacity-20 animate-pulse"></div>
+            </div>
             <div className="hidden sm:block">
-              <motion.h1 
-                className={`text-2xl lg:text-3xl font-bold transition-colors duration-300 ${
-                  isScrolled ? 'text-gray-900' : 'text-white drop-shadow-lg'
-                }`}
-                whileHover={{ scale: 1.05 }}
-              >
+              <h1 className={`text-2xl lg:text-3xl font-bold transition-colors duration-300 ${
+                isScrolled ? 'text-gray-900' : 'text-white drop-shadow-lg'
+              }`}>
                 SGB Group
-              </motion.h1>
-              <p className={`text-sm transition-colors duration-300 ${
+              </h1>
+              <p className={`text-sm font-medium transition-colors duration-300 ${
                 isScrolled ? 'text-gray-600' : 'text-white/90'
               }`}>
-                Real Estate
+                Premium Real Estate
               </p>
             </div>
-          </Link>
+          </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-1">
             {navItems.map((item, index) => (
-              <motion.div
+              <div
                 key={item.name}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 + 0.3 }}
+                className="relative"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                <Link
-                  to={item.path}
-                  className={`relative text-sm font-semibold transition-all duration-300 hover:scale-105 ${
-                    location.pathname === item.path
-                      ? 'text-red-600'
+                <a
+                  href={item.path}
+                  onClick={() => setActiveTab(item.path)}
+                  className={`relative px-4 py-2 text-sm font-semibold transition-all duration-300 rounded-lg group ${
+                    activeTab === item.path
+                      ? 'text-red-600 bg-red-50'
                       : isScrolled 
-                        ? 'text-gray-700 hover:text-red-600' 
-                        : 'text-white hover:text-red-300'
+                        ? 'text-gray-700 hover:text-red-600 hover:bg-red-50' 
+                        : 'text-white hover:text-red-200 hover:bg-white/10'
                   }`}
                 >
-                  {item.name}
-                  {location.pathname === item.path && (
-                    <motion.div
-                      layoutId="underline"
-                      className="absolute -bottom-2 left-0 right-0 h-0.5 bg-red-600 rounded-full"
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ duration: 0.3 }}
-                    />
+                  <span className="relative z-10">{item.name}</span>
+                  {activeTab === item.path && (
+                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-red-600 rounded-full animate-bounce"></div>
                   )}
-                  <motion.div
-                    className="absolute inset-0 bg-red-600/10 rounded-lg -z-10"
-                    initial={{ scale: 0, opacity: 0 }}
-                    whileHover={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.2 }}
-                  />
-                </Link>
-              </motion.div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-red-600/10 to-red-700/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </a>
+              </div>
             ))}
           </nav>
 
           {/* CTA Button */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5 }}
-            className="hidden md:block"
-          >
-            <motion.div
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
+          <div className="hidden md:block">
+            <a
+              href="/contact"
+              className="relative inline-flex items-center justify-center px-6 py-3 overflow-hidden font-semibold text-white transition-all duration-300 bg-gradient-to-r from-red-600 to-red-700 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 hover:scale-105 group"
             >
-              <Link
-                to="/contact"
-                className="relative overflow-hidden bg-gradient-to-r from-red-600 to-red-700 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group"
-              >
-                <span className="relative z-10">Enquire Now</span>
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-red-700 to-red-800"
-                  initial={{ x: '-100%' }}
-                  whileHover={{ x: 0 }}
-                  transition={{ duration: 0.3 }}
-                />
-              </Link>
-            </motion.div>
-          </motion.div>
+              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-red-700 to-red-800 transition-transform duration-300 -translate-x-full group-hover:translate-x-0"></span>
+              <span className="relative z-10 flex items-center space-x-2">
+                <span>Get Quote</span>
+                <Phone className="h-4 w-4" />
+              </span>
+            </a>
+          </div>
 
           {/* Mobile Menu Button */}
-          <motion.button
+          <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-colors duration-300"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            className="lg:hidden p-2 rounded-lg transition-all duration-300 hover:bg-white/10 hover:scale-110"
           >
-            <AnimatePresence mode="wait">
-              {isMobileMenuOpen ? (
-                <motion.div
-                  key="close"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <X className={`h-6 w-6 ${isScrolled ? 'text-gray-700' : 'text-white'}`} />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="menu"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Menu className={`h-6 w-6 ${isScrolled ? 'text-gray-700' : 'text-white'}`} />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.button>
+            <div className="relative w-6 h-6">
+              <Menu className={`absolute inset-0 w-6 h-6 transition-all duration-300 ${
+                isMobileMenuOpen ? 'rotate-90 opacity-0' : 'rotate-0 opacity-100'
+              } ${isScrolled ? 'text-gray-700' : 'text-white'}`} />
+              <X className={`absolute inset-0 w-6 h-6 transition-all duration-300 ${
+                isMobileMenuOpen ? 'rotate-0 opacity-100' : '-rotate-90 opacity-0'
+              } ${isScrolled ? 'text-gray-700' : 'text-white'}`} />
+            </div>
+          </button>
         </div>
 
         {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="lg:hidden overflow-hidden bg-white/95 backdrop-blur-lg rounded-b-2xl shadow-xl"
-            >
-              <div className="py-6 space-y-4">
-                {navItems.map((item, index) => (
-                  <motion.div
-                    key={item.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <Link
-                      to={item.path}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className={`block px-6 py-3 rounded-xl text-lg font-semibold transition-all duration-300 ${
-                        location.pathname === item.path
-                          ? 'text-red-600 bg-red-50'
-                          : 'text-gray-700 hover:text-red-600 hover:bg-gray-50'
-                      }`}
-                    >
-                      {item.name}
-                    </Link>
-                  </motion.div>
-                ))}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                  className="px-6 pt-4"
+        <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${
+          isMobileMenuOpen 
+            ? 'max-h-96 opacity-100 transform translate-y-0' 
+            : 'max-h-0 opacity-0 transform -translate-y-4'
+        }`}>
+          <div className="py-6 bg-white/98 backdrop-blur-xl rounded-b-2xl shadow-2xl border-t border-gray-100">
+            <div className="space-y-2">
+              {navItems.map((item, index) => (
+                <div
+                  key={item.name}
+                  className={`transform transition-all duration-300 ${
+                    isMobileMenuOpen 
+                      ? 'translate-x-0 opacity-100' 
+                      : '-translate-x-8 opacity-0'
+                  }`}
+                  style={{ transitionDelay: `${index * 50}ms` }}
                 >
-                  <Link
-                    to="/contact"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block w-full text-center bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-3 rounded-full font-semibold shadow-lg"
+                  <a
+                    href={item.path}
+                    onClick={() => {
+                      setActiveTab(item.path);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className={`block px-6 py-3 mx-4 rounded-xl text-lg font-semibold transition-all duration-300 ${
+                      activeTab === item.path
+                        ? 'text-red-600 bg-red-50 border-l-4 border-red-600'
+                        : 'text-gray-700 hover:text-red-600 hover:bg-red-50 hover:translate-x-2'
+                    }`}
                   >
-                    Enquire Now
-                  </Link>
-                </motion.div>
+                    {item.name}
+                  </a>
+                </div>
+              ))}
+              <div className={`px-6 pt-4 transform transition-all duration-500 ${
+                isMobileMenuOpen 
+                  ? 'translate-y-0 opacity-100' 
+                  : 'translate-y-4 opacity-0'
+              }`}>
+                <a
+                  href="/contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center justify-center space-x-2 w-full bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                >
+                  <span>Get Quote</span>
+                  <Phone className="h-4 w-4" />
+                </a>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            </div>
+          </div>
+        </div>
       </div>
-    </motion.header>
+    </header>
   );
 };
 
