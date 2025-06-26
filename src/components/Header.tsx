@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Menu, X, Building2, Phone, Mail } from 'lucide-react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('/');
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,8 +19,6 @@ const Header = () => {
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
-    { name: 'Services', path: '/services' },
-    { name: 'Properties', path: '/properties' },
     { name: 'Contact Us', path: '/contact' },
   ];
 
@@ -31,7 +30,6 @@ const Header = () => {
           : 'bg-white/10 backdrop-blur-md'
       }`}
     >
-      {/* Top Contact Bar - Only visible on larger screens */}
       <div className={`hidden lg:block transition-all duration-300 ${
         isScrolled ? 'h-0 overflow-hidden' : 'h-auto'
       }`}>
@@ -56,10 +54,8 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Main Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 lg:h-20">
-          {/* Logo */}
           <a 
             href="/" 
             className="flex items-center space-x-3 group transition-transform duration-300 hover:scale-105"
@@ -84,7 +80,6 @@ const Header = () => {
             </div>
           </a>
 
-          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
             {navItems.map((item, index) => (
               <div
@@ -94,9 +89,8 @@ const Header = () => {
               >
                 <a
                   href={item.path}
-                  onClick={() => setActiveTab(item.path)}
                   className={`relative px-4 py-2 text-sm font-semibold transition-all duration-300 rounded-lg group ${
-                    activeTab === item.path
+                    location.pathname === item.path
                       ? 'text-red-600 bg-red-50'
                       : isScrolled 
                         ? 'text-gray-700 hover:text-red-600 hover:bg-red-50' 
@@ -104,7 +98,7 @@ const Header = () => {
                   }`}
                 >
                   <span className="relative z-10">{item.name}</span>
-                  {activeTab === item.path && (
+                  {location.pathname === item.path && (
                     <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-red-600 rounded-full animate-bounce"></div>
                   )}
                   <div className="absolute inset-0 bg-gradient-to-r from-red-600/10 to-red-700/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -113,7 +107,6 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* CTA Button */}
           <div className="hidden md:block">
             <a
               href="/contact"
@@ -127,7 +120,6 @@ const Header = () => {
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden p-2 rounded-lg transition-all duration-300 hover:bg-white/10 hover:scale-110"
@@ -143,7 +135,6 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${
           isMobileMenuOpen 
             ? 'max-h-96 opacity-100 transform translate-y-0' 
@@ -163,12 +154,9 @@ const Header = () => {
                 >
                   <a
                     href={item.path}
-                    onClick={() => {
-                      setActiveTab(item.path);
-                      setIsMobileMenuOpen(false);
-                    }}
+                    onClick={() => setIsMobileMenuOpen(false)}
                     className={`block px-6 py-3 mx-4 rounded-xl text-lg font-semibold transition-all duration-300 ${
-                      activeTab === item.path
+                      location.pathname === item.path
                         ? 'text-red-600 bg-red-50 border-l-4 border-red-600'
                         : 'text-gray-700 hover:text-red-600 hover:bg-red-50 hover:translate-x-2'
                     }`}
