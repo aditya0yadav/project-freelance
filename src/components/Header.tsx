@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Menu, X, Building2, Phone, Mail } from 'lucide-react';
-import sbp from '../../img/sbp.png';
+import { Menu, X, Phone } from 'lucide-react';
+import LogoImg from '../../img/sbp.png';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -9,9 +9,7 @@ const Header = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -21,6 +19,24 @@ const Header = () => {
     { name: 'About Us', path: '/about' },
     { name: 'Contact Us', path: '/contact' },
   ];
+
+  const Logo = ({ className = '', isScrolled }: { className?: string; isScrolled: boolean }) => (
+    <div className={`relative ${className}`}>
+      <div className="relative w-12 h-12 lg:w-14 lg:h-14">
+        <div className="absolute inset-0 rounded-full bg-gradient-to-br transition-all duration-300
+          p-0.5 from-red-600 to-red-700"></div>
+        <div className="w-full h-full bg-white rounded-full flex items-center justify-center shadow-lg relative z-10 overflow-hidden">
+          <img src={LogoImg} alt="Logo" className="w-10 h-10 object-contain" style={{ imageRendering: 'auto' }} />
+        </div>
+        <div className={`absolute -top-1 -right-1 w-3 h-3 rounded-full transition-all duration-300 ${
+          isScrolled ? 'bg-red-500' : 'bg-red-400'
+        } opacity-80`}></div>
+        <div className={`absolute -bottom-1 -left-1 w-2 h-2 rounded-full transition-all duration-300 ${
+          isScrolled ? 'bg-red-400' : 'bg-red-300'
+        } opacity-60`}></div>
+      </div>
+    </div>
+  );
 
   return (
     <header
@@ -54,26 +70,11 @@ const Header = () => {
             href="/" 
             className="flex items-center space-x-3 group transition-transform duration-300 hover:scale-105"
           >
-          <div className="relative">
-            <img
-              src={sbp}
-              alt="SGB Group Logo"
-              className="h-14 w-16 lg:h-14 lg:w-16 rounded-full object-cover transition-all duration-300 group-hover:scale-90"
+            <Logo 
+              className="transition-transform duration-300 group-hover:scale-110" 
+              isScrolled={isScrolled}
             />
-          </div>
 
-            <div className="hidden sm:block">
-              <h1 className={`text-2xl lg:text-3xl font-bold transition-colors duration-300 ${
-                isScrolled ? 'text-gray-900' : 'text-white drop-shadow-lg'
-              }`}>
-                SGB Group
-              </h1>
-              <p className={`text-sm font-medium transition-colors duration-300 ${
-                isScrolled ? 'text-gray-600' : 'text-white/90'
-              }`}>
-                Premium Real Estate
-              </p>
-            </div>
           </a>
 
           <nav className="hidden lg:flex items-center space-x-1">
