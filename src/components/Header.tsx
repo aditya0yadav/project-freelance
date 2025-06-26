@@ -20,8 +20,6 @@ const Header = () => {
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
-    { name: 'Services', path: '/#services' },
-    { name: 'YEIDA Inventories', path: '/#yeida' },
     { name: 'Contact Us', path: '/contact' },
   ];
 
