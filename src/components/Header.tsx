@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Menu, X, Building2, Phone, Mail } from 'lucide-react';
+import sbp from '../../img/sbp.png';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -53,12 +54,14 @@ const Header = () => {
             href="/" 
             className="flex items-center space-x-3 group transition-transform duration-300 hover:scale-105"
           >
-            <div className="relative">
-              <Building2 className={`h-10 w-10 lg:h-12 lg:w-12 transition-all duration-300 ${
-                isScrolled ? 'text-red-600' : 'text-white drop-shadow-lg'
-              } group-hover:rotate-12 group-hover:scale-110`} />
-              <div className="absolute inset-0 bg-red-600 rounded-full opacity-20 animate-pulse"></div>
-            </div>
+          <div className="relative">
+            <img
+              src={sbp}
+              alt="SGB Group Logo"
+              className="h-14 w-16 lg:h-14 lg:w-16 rounded-full object-cover transition-all duration-300 group-hover:scale-90"
+            />
+          </div>
+
             <div className="hidden sm:block">
               <h1 className={`text-2xl lg:text-3xl font-bold transition-colors duration-300 ${
                 isScrolled ? 'text-gray-900' : 'text-white drop-shadow-lg'
