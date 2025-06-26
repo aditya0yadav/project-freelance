@@ -61,14 +61,14 @@ const Home = () => {
     {
       icon: Factory,
       title: 'Industrial Plots',
-      description: 'Industrial plots offered by us are situated in designated industrial zones and special economic areas developed to boost manufacturing and logistics. These plots are suitable for warehouses, factories, logistics hubs, and production units, with access to wide roads, power supply, water facilities, and government incentives. Ideal for MSMEs and large-scale industries looking to expand operations in North India’s most promising corridor.',
+      description: 'Industrial plots offered by us are situated in designated industrial zones and special economic areas developed to boost manufacturing and logistics. These plots are suitable for warehouses, factories, logistics hubs, and production units, with access to wide roads, power supply, water facilities, and government incentives. Ideal for MSMEs and large-scale industries looking to expand operations in North India most promising corridor.',
       image: 'https://images.pexels.com/photos/4476374/pexels-photo-4476374.jpeg?auto=compress&cs=tinysrgb&w=800',
       color: 'bg-black/40'
     },
     {
       icon: Building,
       title: 'Semi-Commercial Plots',
-      description: 'Semi-commercial plots provide the flexibility of developing both residential and commercial structures on the same parcel of land. Whether it’s a residential complex with ground-floor retail or small office spaces above living units, these plots are highly versatile. Located in mixed-use zones, they attract both investors and business owners seeking long-term rental income and business-friendly surroundings with excellent footfall.',
+      description: 'Semi-commercial plots provide the flexibility of developing both residential and commercial structures on the same parcel of land. Whether it a residential complex with ground-floor retail or small office spaces above living units, these plots are highly versatile. Located in mixed-use zones, they attract both investors and business owners seeking long-term rental income and business-friendly surroundings with excellent footfall.',
       image: 'https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg?auto=compress&cs=tinysrgb&w=800',
       color: 'bg-black/40'
     }
@@ -90,7 +90,7 @@ const Home = () => {
     'Net-zero emissions goal'
   ];
 
-  // Simplified animation variants
+  // Animation variants
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 }
@@ -109,6 +109,75 @@ const Home = () => {
   const slideInRight = {
     hidden: { opacity: 0, x: 30 },
     visible: { opacity: 1, x: 0 }
+  };
+
+  // New service card animations - first 3 from left, last 2 from right
+  const serviceSlideLeft = {
+    hidden: { opacity: 0, x: -60, scale: 0.8 },
+    visible: { 
+      opacity: 1, 
+      x: 0, 
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 15
+      }
+    }
+  };
+
+  const serviceSlideRight = {
+    hidden: { opacity: 0, x: 60, scale: 0.8 },
+    visible: { 
+      opacity: 1, 
+      x: 0, 
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 15
+      }
+    }
+  };
+
+  // Airport image animations
+  const airportImageFloat = {
+    hidden: { opacity: 0, y: 50, rotateX: -15 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      rotateX: 0,
+      transition: {
+        type: "spring",
+        stiffness: 80,
+        damping: 20
+      }
+    }
+  };
+
+  const airportFeatureStagger = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const airportFeatureItem = {
+    hidden: { opacity: 0, x: -40, scale: 0.8 },
+    visible: { 
+      opacity: 1, 
+      x: 0, 
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 120,
+        damping: 12
+      }
+    }
   };
 
   return (
@@ -131,10 +200,46 @@ const Home = () => {
           />
         </motion.div>
 
-        {/* Simplified background elements */}
+        {/* Enhanced background elements */}
         <div className="absolute inset-0 z-10 pointer-events-none">
-          <div className="absolute top-20 left-20 w-32 h-32 bg-red-500/10 rounded-full blur-xl animate-pulse" />
-          <div className="absolute bottom-40 right-32 w-24 h-24 bg-blue-500/10 rounded-full blur-xl animate-pulse" style={{ animationDelay: '2s' }} />
+          <motion.div 
+            className="absolute top-20 left-20 w-32 h-32 bg-red-500/10 rounded-full blur-xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.6, 0.3]
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div 
+            className="absolute bottom-40 right-32 w-24 h-24 bg-blue-500/10 rounded-full blur-xl"
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [0.2, 0.5, 0.2]
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1
+            }}
+          />
+          <motion.div 
+            className="absolute top-1/2 left-1/4 w-16 h-16 bg-green-500/10 rounded-full blur-xl"
+            animate={{
+              scale: [1, 1.4, 1],
+              opacity: [0.1, 0.4, 0.1]
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2
+            }}
+          />
         </div>
 
         {/* Hero Content */}
@@ -168,12 +273,33 @@ const Home = () => {
           </motion.div>
         </div>
 
-        {/* Simplified scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        {/* Enhanced scroll indicator */}
+        <motion.div 
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          animate={{
+            y: [0, 10, 0]
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
           <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse" />
+            <motion.div 
+              className="w-1 h-3 bg-white rounded-full mt-2"
+              animate={{
+                opacity: [0.3, 1, 0.3],
+                scale: [0.8, 1.2, 0.8]
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* What We Do Section */}
@@ -257,7 +383,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Our Services Section */}
+      {/* Our Services Section - Enhanced with directional animations */}
       <section
         id="services"
         ref={servicesRef}
@@ -300,37 +426,88 @@ const Home = () => {
                 key={service.title}
                 initial="hidden"
                 animate={servicesInView ? "visible" : "hidden"}
-                variants={fadeInUp}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col"
+                variants={index < 3 ? serviceSlideLeft : serviceSlideRight}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: index < 3 ? index * 0.2 : (index - 3) * 0.2 + 0.4 
+                }}
+                className="group relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 flex flex-col"
+                whileHover={{ 
+                  scale: 1.02,
+                  rotateY: index < 3 ? 5 : -5,
+                  transition: { duration: 0.3 }
+                }}
               >
                 {/* Image */}
                 <div className="relative overflow-hidden h-48 flex-shrink-0">
-                  <img
+                  <motion.img
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.15 }}
+                    transition={{ duration: 0.7 }}
                   />
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-300" />
-                  <div className="absolute top-4 right-4 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300" />
+                  <motion.div 
+                    className="absolute top-4 right-4 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center"
+                    whileHover={{ 
+                      rotate: 360,
+                      scale: 1.2,
+                      backgroundColor: "rgba(255,255,255,0.4)"
+                    }}
+                    transition={{ duration: 0.5 }}
+                  >
                     {React.createElement(service.icon, { className: 'h-6 w-6 text-white' })}
+                  </motion.div>
+                  
+                  {/* Floating particles effect */}
+                  <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    {[...Array(6)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        className="absolute w-2 h-2 bg-white/30 rounded-full"
+                        style={{
+                          left: `${20 + i * 15}%`,
+                          top: `${30 + i * 10}%`
+                        }}
+                        animate={{
+                          y: [-10, -30, -10],
+                          opacity: [0, 1, 0]
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: i * 0.2
+                        }}
+                      />
+                    ))}
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="p-6 flex flex-col justify-between h-full">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors duration-300">
+                  <motion.h3
+                    className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors duration-300"
+                    whileHover={{ scale: 1.05 }}
+                  >
                     {service.title}
-                  </h3>
+                  </motion.h3>
                   <p className="text-gray-600 text-sm leading-relaxed line-clamp-6">
                     {service.description}
                   </p>
                 </div>
+
+                {/* Hover border effect */}
+                <motion.div
+                  className="absolute inset-0 border-2 border-transparent rounded-2xl"
+                  whileHover={{
+                    borderColor: index < 3 ? "#ef4444" : "#3b82f6",
+                  }}
+                  transition={{ duration: 0.3 }}
+                />
               </motion.div>
             ))}
           </div>
-
-
         </div>
       </section>
 
@@ -383,36 +560,71 @@ const Home = () => {
               variants={fadeInUp}
               transition={{ duration: 0.8 }}
             >
-              <Link
-                to="/contact"
-                className="group relative overflow-hidden bg-gradient-to-r from-red-600 to-red-700 text-white px-10 py-4 rounded-full text-lg font-bold shadow-2xl hover:shadow-red-500/25 hover:scale-105 transition-all duration-300"
+              <motion.div
+                whileHover={{ scale: 1.1, rotateZ: 2 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <span className="relative z-10 flex items-center">
-                  ENQUIRY NOW
-                  <Zap className="ml-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
-                </span>
-              </Link>
+                <Link
+                  to="/contact"
+                  className="group relative overflow-hidden bg-gradient-to-r from-red-600 to-red-700 text-white px-10 py-4 rounded-full text-lg font-bold shadow-2xl hover:shadow-red-500/25 transition-all duration-300"
+                >
+                  <span className="relative z-10 flex items-center">
+                    ENQUIRY NOW
+                    <Zap className="ml-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
+                  </span>
+                </Link>
+              </motion.div>
 
-              <Link
-                to="/about"
-                className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-700 text-white px-10 py-4 rounded-full text-lg font-bold shadow-2xl hover:shadow-blue-500/25 hover:scale-105 transition-all duration-300"
+              <motion.div
+                whileHover={{ scale: 1.1, rotateZ: -2 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <span className="relative z-10 flex items-center">
-                  ABOUT US
-                  <Target className="ml-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
-                </span>
-              </Link>
+                <Link
+                  to="/about"
+                  className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-700 text-white px-10 py-4 rounded-full text-lg font-bold shadow-2xl hover:shadow-blue-500/25 transition-all duration-300"
+                >
+                  <span className="relative z-10 flex items-center">
+                    ABOUT US
+                    <Target className="ml-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
+                  </span>
+                </Link>
+              </motion.div>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Noida International Airport Section */}
+      {/* Noida International Airport Section - Enhanced */}
       <section
         ref={airportRef}
         className="py-20 bg-gradient-to-br from-white via-blue-50 to-white relative overflow-hidden"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          {[...Array(5)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-32 h-32 bg-blue-100/20 rounded-full blur-xl"
+              style={{
+                left: `${10 + i * 20}%`,
+                top: `${20 + i * 15}%`
+              }}
+              animate={{
+                y: [0, -20, 0],
+                scale: [1, 1.1, 1],
+                opacity: [0.3, 0.6, 0.3]
+              }}
+              transition={{
+                duration: 4 + i,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 0.5
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial="hidden"
             animate={airportInView ? "visible" : "hidden"}
@@ -420,9 +632,29 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            <motion.h2
+              className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
               <span className="text-blue-600">Noida International</span> Airport
-            </h2>
+            </motion.h2>
+            
+            {/* Animated plane icon */}
+            <motion.div
+              className="flex justify-center mb-8"
+              animate={{
+                x: [0, 50, 0],
+                rotateZ: [0, 10, 0]
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              <Plane className="h-12 w-12 text-blue-500" />
+            </motion.div>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -444,43 +676,54 @@ const Home = () => {
                 Over 5,000 acres with sustainability focus and world-class infrastructure.
               </motion.p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+              <motion.div 
+                className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8"
+                variants={airportFeatureStagger}
+                initial="hidden"
+                animate={airportInView ? "visible" : "hidden"}
+              >
                 {airportFeatures.map((feature, index) => (
                   <motion.div
                     key={feature}
-                    variants={slideInLeft}
-                    transition={{ duration: 0.6 }}
+                    variants={airportFeatureItem}
                     className="flex items-center space-x-3 group"
+                    whileHover={{ 
+                      x: 10,
+                      transition: { duration: 0.2 }
+                    }}
                   >
-                    <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                      <Star className="h-4 w-4 text-white" />
-                    </div>
-                    <span className="text-gray-700 group-hover:text-blue-600 transition-colors duration-300">
+                    <motion.div 
+                      className="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0"
+                      whileHover={{ 
+                        scale: 1.2,
+                        rotate: 360,
+                        background: "linear-gradient(45deg, #3b82f6, #1d4ed8)"
+                      }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <CheckCircle className="h-4 w-4 text-white" />
+                    </motion.div>
+                    <span className="text-gray-700 text-sm group-hover:text-blue-600 transition-colors duration-300">
                       {feature}
                     </span>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
 
               <motion.div
                 variants={slideInLeft}
                 transition={{ duration: 0.6 }}
-                className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-2xl border border-blue-100"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Key Highlights</h3>
-                <p className="text-gray-600">
-                  First flight test in December 2024 • IATA code "DXN" •
-                  Launch airlines: IndiGo, Akasa Air • Built with net-zero emissions goal
-                </p>
               </motion.div>
             </motion.div>
 
-            {/* Image */}
+            {/* Right Image */}
             <motion.div
               initial="hidden"
               animate={airportInView ? "visible" : "hidden"}
-              variants={slideInRight}
-              transition={{ duration: 0.8 }}
+              variants={airportImageFloat}
               className="relative"
             >
               <div className="relative overflow-hidden rounded-2xl shadow-2xl group">
@@ -489,16 +732,99 @@ const Home = () => {
                   alt="Airport Development"
                   className="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 <div className="absolute bottom-6 left-6 text-white">
-                  <h3 className="text-xl font-bold mb-2">Future Ready Infrastructure</h3>
-                  <p className="text-gray-200">Opening April 17, 2025</p>
+                  <h3 className="text-xl font-bold mb-2">Noida International Airport</h3>
+                  <p className="text-gray-200">A gateway to global connectivity</p>
+                </div>
+                {/* Floating particles effect */}
+                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  {[...Array(4)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute w-2 h-2 bg-white/30 rounded-full"
+                      style={{
+                        left: `${30 + i * 15}%`,
+                        top: `${20 + i * 10}%`
+                      }}
+                      animate={{
+                        y: [-10, -20, -10],
+                        opacity: [0, 1, 0]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: i * 0.2
+                      }}
+                    />
+                  ))}
                 </div>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
+
+      {/* Call to Action Section */}
+      <section className="py-20 bg-gradient-to-r from-red-600 to-red-700 text-white relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <motion.div
+            className="absolute top-10 right-20 w-40 h-40 bg-red-400/20 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.6, 0.3]
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.2 } }
+            }}
+          >
+            <motion.h2
+              className="text-4xl lg:text-5xl font-bold mb-6"
+              variants={fadeInUp}
+              transition={{ duration: 0.6 }}
+            >
+              Ready to Invest in Your Future?
+            </motion.h2>
+            <motion.p
+              className="text-xl mb-10 max-w-3xl mx-auto"
+              variants={fadeInUp}
+              transition={{ duration: 0.6 }}
+            >
+              Join thousands of satisfied clients who have trusted SGB Group to secure prime real estate opportunities along the Yamuna Expressway.
+            </motion.p>
+            <motion.div
+              variants={fadeInUp}
+              transition={{ duration: 0.6 }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link
+                to="/contact"
+                className="group relative overflow-hidden bg-white text-red-600 px-10 py-4 rounded-full text-lg font-bold shadow-2xl hover:shadow-white/25 transition-all duration-300"
+              >
+                <span className="relative z-10 flex items-center">
+                  Get Started Today
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
+                </span>
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
     </div>
   );
 };
