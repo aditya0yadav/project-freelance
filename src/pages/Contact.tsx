@@ -49,13 +49,7 @@ const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
       link: 'tel:+919891919244',
       color: 'from-green-500 to-green-600',
     },
-    {
-      icon: Mail,
-      title: 'Email',
-      details: ['kasanaji143@gmail.com'],
-      link: 'mailto:kasanaji143@gmail.com',
-      color: 'from-red-500 to-red-600',
-    },
+
     {
       icon: Clock,
       title: 'Working Hours',
