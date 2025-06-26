@@ -38,10 +38,6 @@ const Header = () => {
                   <Phone className="h-4 w-4" />
                   <span>+91 98765 43210</span>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <Mail className="h-4 w-4" />
-                  <span>info@sgbgroup.com</span>
-                </div>
               </div>
               <div className="text-sm">
                 Premium Real Estate Solutions Since 2010
