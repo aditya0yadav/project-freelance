@@ -1,21 +1,16 @@
 {
-  "redirects": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/www/:path*",
-      "destination": "https://project-freelance-seven.vercel.app/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/http/:path*",
-      "has": [{ "type": "host", "value": "project-freelance-seven.vercel.app" }],
-      "destination": "https://project-freelance-seven.vercel.app/:path*",
-      "permanent": true
+      "src": "backend/index.js",
+      "use": "@vercel/node"
     }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/",
-      "destination": "/index.php"
+      "src": "/(.*)",
+      "dest": "backend/index.js"
     }
-  ]
+  ],
+  "buildCommand": "npm install build"
 }
