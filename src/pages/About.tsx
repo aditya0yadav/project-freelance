@@ -9,10 +9,10 @@ const About = () => {
   };
 
   const stats = [
-    { icon: Users, number: '500+', label: 'Satisfied Clients', color: 'from-blue-500 to-blue-600' },
-    { icon: Award, number: '10+', label: 'Years of Excellence', color: 'from-green-500 to-green-600' },
-    { icon: MapPin, number: '1000+', label: 'Properties Delivered', color: 'from-red-500 to-red-600' },
-    { icon: Building, number: '50+', label: 'Active Projects', color: 'from-purple-500 to-purple-600' },
+    { icon: Users, number: '10000+', label: 'Satisfied Clients', color: 'from-blue-500 to-blue-600' },
+    { icon: Award, number: '20+', label: 'Years of Excellence', color: 'from-green-500 to-green-600' },
+    { icon: MapPin, number: '5000+', label: 'Properties Delivered', color: 'from-red-500 to-red-600' },
+    { icon: Building, number: '100+', label: 'Active Projects', color: 'from-purple-500 to-purple-600' },
   ];
 
   const values = [
@@ -67,10 +67,10 @@ const About = () => {
         <div className="absolute bottom-40 right-32 w-24 h-24 bg-blue-500/10 rounded-full blur-xl animate-pulse" />
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold mb-8 leading-tight">
-            Welcome To <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">SGB Group</span>
+            Welcome To <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">SBP Group</span>
           </h1>
           <p className="text-xl sm:text-2xl lg:text-3xl text-gray-200 mb-12 max-w-4xl mx-auto leading-relaxed">
-            We have invited you to Yamuna Expressway with SGB Group of Real Estate
+            We have invited you to Yamuna Expressway with SBP Group of Real Estate
           </p>
         </div>
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
@@ -108,10 +108,10 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8">
-                About <span className="text-red-600">SGB Group</span>
+                About <span className="text-red-600">SBP Group</span>
               </h2>
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                SGB Group stands as a premier real estate development and investment company, specializing in the rapidly growing Yamuna Expressway corridor. With over a decade of experience, we have established ourselves as trusted advisors in the real estate sector.
+                SBP Group stands as a premier real estate development and investment company, specializing in the rapidly growing Yamuna Expressway corridor. With over a decade of experience, we have established ourselves as trusted advisors in the real estate sector.
               </p>
               <p className="text-lg text-gray-700 mb-8 leading-relaxed">
                 Our comprehensive approach encompasses residential and industrial real estate solutions, backed by deep market insights and a commitment to delivering exceptional value to our clients and investors.
@@ -134,7 +134,7 @@ const About = () => {
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                 <img
                   src="https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="SGB Group Office"
+                  alt="SBP Group Office"
                   className="w-full h-96 object-cover transform hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -221,14 +221,18 @@ const About = () => {
                   <MapPin className="h-6 w-6 text-red-600 mt-1" />
                   <div>
                     <h4 className="font-semibold text-gray-900">Address</h4>
-                    <p className="text-gray-600">Yamuna Expressway, Greater Noida, Uttar Pradesh</p>
+                    <p className="text-gray-600">608 6th floor
+                      Tradex tower 2 alpha 1
+                      commercial belt
+                      Gr noida
+                      201310 </p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
                   <Phone className="h-6 w-6 text-red-600 mt-1" />
                   <div>
                     <h4 className="font-semibold text-gray-900">Phone</h4>
-                    <p className="text-gray-600">+91-9891919244</p>
+                    <p className="text-gray-600">+91-9818319219</p>
                   </div>
                 </div>
 
@@ -236,14 +240,14 @@ const About = () => {
                   <Mail className="h-6 w-6 text-red-600 mt-1" />
                   <div>
                     <h4 className="font-semibold text-gray-900">Email</h4>
-                    <p className="text-gray-600">info@sgbgroup.com</p>
+                    <p className="text-gray-600">sbpgroupofrealestate@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
                   <Clock className="h-6 w-6 text-red-600 mt-1" />
                   <div>
                     <h4 className="font-semibold text-gray-900">Business Hours</h4>
-                    <p className="text-gray-600">Monday - Saturday: 9:00 AM - 6:00 PM</p>
+                    <p className="text-gray-600">Monday - Sunday: 9:00 AM - 6:00 PM</p>
                   </div>
                 </div>
               </div>
@@ -263,14 +267,14 @@ const About = () => {
 
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="SGB Group Location"
+                  title="SBP Group Location"
                   className="w-full h-96"
                 />
               </div>
               <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg">
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-red-600 rounded-full animate-pulse" />
-                  <span className="text-sm font-semibold text-gray-900">SGB Group Office</span>
+                  <span className="text-sm font-semibold text-gray-900">SBP Group Office</span>
                 </div>
               </div>
             </div>
@@ -283,7 +287,7 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold text-white mb-8">Ready to Invest in Your Future?</h2>
           <p className="text-xl text-red-100 mb-8 max-w-3xl mx-auto">
-            Join hundreds of satisfied investors who have trusted SGB Group with their real estate investments
+            Join hundreds of satisfied investors who have trusted SBP Group with their real estate investments
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

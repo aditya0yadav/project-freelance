@@ -263,7 +263,7 @@ const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
                   <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
                     <Star className="h-4 w-4 text-white" />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900">Why Choose SGB Group?</h3>
+                  <h3 className="text-lg font-semibold text-gray-900">Why Choose SBP Group?</h3>
                 </div>
                 <p className="text-gray-600 text-sm leading-relaxed">
                   With over 10 years of experience and 500+ satisfied clients, we're your trusted 

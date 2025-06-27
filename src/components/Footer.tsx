@@ -12,7 +12,6 @@ const Footer = () => {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
-    { name: 'Terms', path: '/terms' },
   ];
 
   const socialLinks = [
@@ -66,7 +65,7 @@ const Footer = () => {
                 </motion.div>
                 <div>
                   <h3 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                    SGB Group
+                    SBP Group
                   </h3>
                   <p className="text-gray-400">Real Estate</p>
                 </div>
@@ -129,10 +128,10 @@ const Footer = () => {
                 >
                   <Phone className="h-5 w-5 text-red-500 group-hover:scale-110 transition-transform" />
                   <a 
-                    href="tel:+919891919244" 
+                    href="tel:+9818319219" 
                     className="text-gray-300 hover:text-red-400 transition-colors duration-300"
                   >
-                    +91-9891919244
+                    +91-9818319219
                   </a>
                 </motion.div>
               </div>
@@ -149,7 +148,7 @@ const Footer = () => {
             className="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
           >
             <p className="text-gray-400 text-center md:text-left">
-              © 2024 SGB Group Of Real Estate. All rights reserved.
+              © 2024 SBP Group Of Real Estate. All rights reserved.
             </p>
             
             {/* Scroll to Top Button */}

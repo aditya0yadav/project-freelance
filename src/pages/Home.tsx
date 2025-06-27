@@ -40,7 +40,7 @@ const Home = () => {
     {
       icon: Landmark,
       title: 'Acquisition Land',
-      description: 'Acquiring land involves navigating complex processes that require a deep understanding of zoning laws, land-use planning, environmental regulations, and market dynamics. At SGB Group, we provide expert guidance to ensure seamless acquisition of the right land at the right price. Our team performs in-depth due diligence, including legal verification, feasibility studies, and risk assessments to help you make confident investment decisions and unlock maximum value from your purchase.',
+      description: 'Acquiring land involves navigating complex processes that require a deep understanding of zoning laws, land-use planning, environmental regulations, and market dynamics. At SBP Group, we provide expert guidance to ensure seamless acquisition of the right land at the right price. Our team performs in-depth due diligence, including legal verification, feasibility studies, and risk assessments to help you make confident investment decisions and unlock maximum value from your purchase.',
       image: 'https://images.pexels.com/photos/1370704/pexels-photo-1370704.jpeg?auto=compress&cs=tinysrgb&w=800',
       color: 'bg-black/40'
     },
@@ -259,7 +259,7 @@ const Home = () => {
             >
               Welcome To{' '}
               <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
-                SGB Group
+                SBP Group
               </span>
             </motion.h1>
 
@@ -268,7 +268,7 @@ const Home = () => {
               variants={fadeInUp}
               transition={{ duration: 0.8 }}
             >
-              We have invited you to Yamuna Expressway with SGB Group of Real Estate
+              We have invited you to Yamuna Expressway with SBP Group of Real Estate
             </motion.p>
           </motion.div>
         </div>
@@ -331,7 +331,7 @@ const Home = () => {
                 variants={slideInLeft}
                 transition={{ duration: 0.6 }}
               >
-                At SGB Group Of Real Estate, we understand that real estate transactions can be
+                At SBP Group Of Real Estate, we understand that real estate transactions can be
                 daunting and stressful. That's why we go above and beyond to ensure that our
                 clients have a seamless and hassle-free experience.
               </motion.p>
@@ -803,7 +803,7 @@ const Home = () => {
               variants={fadeInUp}
               transition={{ duration: 0.6 }}
             >
-              Join thousands of satisfied clients who have trusted SGB Group to secure prime real estate opportunities along the Yamuna Expressway.
+              Join thousands of satisfied clients who have trusted SBP Group to secure prime real estate opportunities along the Yamuna Expressway.
             </motion.p>
             <motion.div
               variants={fadeInUp}
