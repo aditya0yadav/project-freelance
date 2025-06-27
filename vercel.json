@@ -1,0 +1,21 @@
+{
+  "redirects": [
+    {
+      "source": "/www/:path*",
+      "destination": "https://project-freelance-seven.vercel.app/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/http/:path*",
+      "has": [{ "type": "host", "value": "project-freelance-seven.vercel.app" }],
+      "destination": "https://project-freelance-seven.vercel.app/:path*",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.php"
+    }
+  ]
+}
