@@ -60,11 +60,25 @@ const About = () => {
 
   return (
     <div className="pt-16 lg:pt-20">
-      {/* Hero Section */}
-
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-cover bg-center bg-fixed" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://images.pexels.com/photos/280229/pexels-photo-280229.jpeg?auto=compress&cs=tinysrgb&w=1920')` }}>
+      {/* Hero Section - Fixed for iOS */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ 
+            backgroundImage: `url('https://images.pexels.com/photos/280229/pexels-photo-280229.jpeg?auto=compress&cs=tinysrgb&w=1920')`,
+            minHeight: '100vh'
+          }}
+        />
+        
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
+        
+        {/* Decorative Elements */}
         <div className="absolute top-20 left-20 w-32 h-32 bg-red-500/10 rounded-full blur-xl animate-pulse" />
         <div className="absolute bottom-40 right-32 w-24 h-24 bg-blue-500/10 rounded-full blur-xl animate-pulse" />
+        
+        {/* Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold mb-8 leading-tight">
             Welcome To <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">SBP Group</span>
@@ -73,12 +87,15 @@ const About = () => {
             We have invited you to Yamuna Expressway with SBP Group of Real Estate
           </p>
         </div>
+        
+        {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
           <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
             <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse" />
           </div>
         </div>
       </section>
+
       {/* Stats Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -264,7 +281,6 @@ const About = () => {
                   width="100%"
                   height="400"
                   style={{ border: 0 }}
-
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   title="SBP Group Location"
@@ -304,19 +320,3 @@ const About = () => {
 };
 
 export default About;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
