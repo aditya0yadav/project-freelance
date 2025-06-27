@@ -81,7 +81,7 @@ const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://wa.me/919891919244"
+                href="https://wa.me/9818319219"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-all duration-200 hover:shadow-lg"
@@ -90,7 +90,7 @@ const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
                 WhatsApp
               </a>
               <a
-                href="tel:+919891919244"
+                href="tel:+91-9818319219"
                 className="inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium transition-all duration-200 hover:shadow-lg"
               >
                 <Phone className="mr-2 h-4 w-4" />
