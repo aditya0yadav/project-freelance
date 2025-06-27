@@ -266,7 +266,7 @@ const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
                   <h3 className="text-lg font-semibold text-gray-900">Why Choose SBP Group?</h3>
                 </div>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  With over 10 years of experience and 500+ satisfied clients, we're your trusted 
+                  With over 20 years of experience and 10000+ satisfied clients, we're your trusted 
                   partner for all real estate needs in the Yamuna Expressway region.
                 </p>
               </div>
