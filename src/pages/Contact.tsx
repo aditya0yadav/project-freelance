@@ -54,7 +54,7 @@ const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
       icon: Clock,
       title: 'Working Hours',
       details: [
-        'Monday - Saturday: 9:00 AM - 7:00 PM',
+        'Monday - Sunday: 9:00 AM - 7:00 PM',
         'Sunday: 10:00 AM - 5:00 PM'
       ],
       color: 'from-purple-500 to-purple-600',
