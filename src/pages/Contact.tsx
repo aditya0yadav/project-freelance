@@ -45,8 +45,8 @@ const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     {
       icon: Phone,
       title: 'Phone & WhatsApp',
-      details: ['+91-9891919244'],
-      link: 'tel:+919891919244',
+      details: ['+91-9818319219'],
+      link: 'tel:+91-9818319219',
       color: 'from-green-500 to-green-600',
     },
 
