@@ -6,13 +6,13 @@ const FloatingButtons = () => {
   const buttons = [
     {
       icon: Phone,
-      href: 'tel:+919891919244',
+      href: 'tel:+919818319219',
       color: 'bg-green-500 hover:bg-green-600',
       label: 'Call Us',
     },
     {
       icon: MessageCircle,
-      href: 'https://wa.me/919891919244',
+      href: 'https://wa.me/9818319219',
       color: 'bg-green-600 hover:bg-green-700',
       label: 'WhatsApp',
     },
